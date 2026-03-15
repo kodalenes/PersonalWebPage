@@ -47,6 +47,12 @@ body {
 	background: rgba(39, 39, 39, 0.85);
 	backdrop-filter: blur(12px);
 	border-bottom: 1px solid var(--border);
+	transition: background 0.4s ease;
+}
+
+#site-header.scrolled {
+	background: rgba(20, 20, 20, 0.97) !important;
+	border-bottom: 1px solid rgba(72, 159, 181, 0.3);
 }
 
 .header-nav {
