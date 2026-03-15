@@ -231,7 +231,7 @@ body {
 	position: absolute;
 	right: 60px;
 	bottom: 40px;
-	font-size: 16vw;
+	font-size: 12vw;
 	color: var(--text--muted);
 	line-height: 1;
 	pointer-events: none;
