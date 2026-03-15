@@ -101,7 +101,26 @@ function typewriterEffect() {
 	}, 50);
 }
 
+function scrollAnimReveal() {
+	const elements = document.querySelectorAll(".skills-card , .stat-item  , .project-card");
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("visible");
+					observer.unobserve(entry.target);
+				}
+			});
+		},
+		{ threshold: 0.15 },
+	);
+
+	elements.forEach((el) => observer.observe(el));
+}
+
 navbarScroll();
 filterProjectCards();
 addScrollToTopButton();
 typewriterEffect();
+scrollAnimReveal();
