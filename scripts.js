@@ -22,7 +22,7 @@ const observer = new IntersectionObserver(
 			}
 		});
 	},
-	{ threshold: 0.4 },
+	{ threshold: 0.6 },
 );
 
 sections.forEach((s) => observer.observe(s));
@@ -55,4 +55,25 @@ filterBtns.forEach((btn) => {
 			}
 		});
 	});
+});
+
+//Sayfanin en altina inince cikacak  uste cik butonu
+//Butonu olusturma
+const scrollTopBtn = document.createElement("button");
+scrollTopBtn.textContent = "↑";
+scrollTopBtn.id = "scroll-top-btn";
+document.body.appendChild(scrollTopBtn);
+
+//Scroll u dinleme ve butonu gosterme
+window.addEventListener("scroll", () => {
+	if (window.scrollY > 300) {
+		scrollTopBtn.style.display = "block";
+	} else {
+		scrollTopBtn.style.display = "none";
+	}
+});
+
+//Tiklaninca en uste goturme
+scrollTopBtn.addEventListener("click", () => {
+	window.scrollTo({ top: 0, behavior: "smooth" });
 });
