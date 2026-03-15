@@ -169,6 +169,12 @@ body {
 	animation-delay: 0.4s;
 }
 
+#typewriter::after {
+	content: "|";
+	color: var(--highlight);
+	animation: blink 0.7s infinite;
+}
+
 .hero-btns {
 	display: flex;
 	gap: 18px;
