@@ -45,7 +45,6 @@ body {
 	right: 0;
 	z-index: 100;
 	background: rgba(39, 39, 39, 0.85);
-	backdrop-filter: blur(12px);
 	border-bottom: 1px solid var(--border);
 	transition: background 0.4s ease;
 }
@@ -375,7 +374,10 @@ body {
 	padding: 36px 28px;
 	background: var(--surface);
 	border: 1px solid var(--border);
-	transition: all 0.3s ease;
+	transition:
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		background 0.3s ease;
 	opacity: 0;
 }
 .skills-card.visible {
@@ -479,7 +481,10 @@ body {
 	padding: 36px 28px;
 	background: var(--surface);
 	border: 1px solid var(--border);
-	transition: all 0.3s ease;
+	transition:
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		background 0.3s ease;
 	cursor: pointer;
 	opacity: 0;
 }
@@ -635,6 +640,12 @@ body {
 	letter-spacing: 1px;
 }
 
+.skills-card,
+.project-card,
+.stat-item {
+	will-change: transform, opacity;
+}
+
 #scroll-top-btn {
 	display: none;
 	position: fixed;
@@ -650,7 +661,6 @@ body {
 	cursor: pointer;
 	transition: all 0.3s;
 	z-index: 999;
-	backdrop-filter: blur(8px);
 }
 
 #scroll-top-btn:hover {
@@ -728,6 +738,15 @@ body {
 	}
 }
 
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
 /* ── MOBİL RESPONSIVE ── */
 @media (max-width: 768px) {
 	/* ── NAV ── */

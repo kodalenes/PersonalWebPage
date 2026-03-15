@@ -1,14 +1,5 @@
 //Sayfadan biraz assagi inince navigation bar koyulasir
-function navbarScroll() {
-	window.addEventListener("scroll", () => {
-		const header = document.getElementById("site-header");
-		if (window.scrollY > 50) {
-			header.classList.add("scrolled");
-		} else {
-			header.classList.remove("scrolled");
-		}
-	});
-
+function navLinksEffect() {
 	//Bulundugumuz bolumu navigation linkde vurgulama
 	const sections = document.querySelectorAll("section[id]");
 	const navLinks = document.querySelectorAll(".nav-links a");
@@ -68,15 +59,6 @@ function addScrollToTopButton() {
 	scrollTopBtn.id = "scroll-top-btn";
 	document.body.appendChild(scrollTopBtn);
 
-	//Scroll u dinleme ve butonu gosterme
-	window.addEventListener("scroll", () => {
-		if (window.scrollY > 300) {
-			scrollTopBtn.style.display = "block";
-		} else {
-			scrollTopBtn.style.display = "none";
-		}
-	});
-
 	//Tiklaninca en uste goturme
 	scrollTopBtn.addEventListener("click", () => {
 		window.scrollTo({ top: 0, behavior: "smooth" });
@@ -119,8 +101,30 @@ function scrollAnimReveal() {
 	elements.forEach((el) => observer.observe(el));
 }
 
-navbarScroll();
+function onScroll() {
+	let ticking = false;
+
+	window.addEventListener("scroll", () => {
+		if (!ticking) {
+			requestAnimationFrame(() => {
+				const scrollY = window.scrollY;
+				const header = document.getElementById("site-header");
+				const scrollTopBtn = document.getElementById("scroll-top-btn");
+
+				header.classList.toggle("scrolled", scrollY > 50);
+
+				scrollTopBtn.style.display = scrollY > 300 ? "block" : "none";
+
+				ticking = false;
+			});
+			ticking = true;
+		}
+	});
+}
+
+navLinksEffect();
 filterProjectCards();
 addScrollToTopButton();
 typewriterEffect();
 scrollAnimReveal();
+onScroll();
