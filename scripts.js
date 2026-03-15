@@ -122,9 +122,11 @@ function onScroll() {
 	});
 }
 
-navLinksEffect();
-filterProjectCards();
-addScrollToTopButton();
-typewriterEffect();
-scrollAnimReveal();
-onScroll();
+document.addEventListener("DOMContentLoaded", () => {
+	navLinksEffect();
+	filterProjectCards();
+	addScrollToTopButton();
+	typewriterEffect();
+	scrollAnimReveal();
+	onScroll();
+});
