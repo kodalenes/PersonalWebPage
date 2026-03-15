@@ -502,6 +502,8 @@ body {
 		transform 0.3s ease,
 		background 0.3s ease;
 	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
 	opacity: 0;
 }
 
